@@ -18,7 +18,9 @@ ValidationCPF.prototype.validate = function() {
     if (this.cleanCPF.length !== 11) return false;
     if (this.isSequential()) return false;
 
-    const baseCPF = this.cleanCPF.slice(0, -2); // first nine numbers
+    // first nine numbers
+    const baseCPF = this.cleanCPF.slice(0, -2);
+
     const firstDigit = this.generateDigit(baseCPF);
     const secondDigit = this.generateDigit(baseCPF + firstDigit);
 
@@ -52,4 +54,6 @@ ValidationCPF.prototype.generateDigit = function(baseCPF) {
 }
 
 const cpf = new ValidationCPF('042.736.150-88');
+
+// return true or false
 console.log(cpf.cleanCPF, cpf.validate());
